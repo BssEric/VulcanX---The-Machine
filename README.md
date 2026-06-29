@@ -67,8 +67,6 @@ Recursos utilizados:
 
 ```
 
----
-
 ## Storytelling
 
 Cada seção representa um capítulo da apresentação do produto.
