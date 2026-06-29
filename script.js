@@ -463,11 +463,12 @@ const VideoTravelModule = (() => {
      Bidirecional: onUpdate lida com ida e volta.
   ─────────────────────────────────────────────────────────── */
   function initScrub() {
+    const isMobile = window.innerWidth <= 768;
     ScrollTrigger.create({
       trigger: bridge,
-      start: 'top bottom',  // bridge começa a entrar na viewport
+      start: isMobile ? 'top 75%' : 'top bottom',  // Mobile: inicia mais tarde; Desktop: entrada normal
       end:   'bottom 15%',  // Finaliza o percurso um pouco antes do fim da ponte
-      scrub: true,
+      scrub: isMobile ? 0.3 : true,  // Mobile: scrub mais responsivo; Desktop: scrub suave
  
       /* ── FRAME A FRAME (ida e volta) ── */
       onUpdate(self) {
@@ -557,11 +558,12 @@ const ScrubModule = (() => {
     }
 
     // ScrollTrigger que controla o progresso
+    const isMobile = window.innerWidth <= 768;
     ScrollTrigger.create({
       trigger: '#s02',
       start: 'top top',
       end: 'bottom bottom',
-      scrub: 1, // Adiciona suavização de 1s para evitar travamentos no seek do vídeo
+      scrub: isMobile ? 0.2 : 0.5, // Mobile: scrub mínimo; Desktop: scrub moderado
       onUpdate: (self) => {
         const p = self.progress;
  
@@ -570,8 +572,18 @@ const ScrubModule = (() => {
         pctEl.textContent   = Math.round(p * 100) + '%';
  
         // Controla video.currentTime se vídeo disponível
+        // Throttling no mobile para evitar travamentos no seek
         if (scrubVid.duration && scrubVid.readyState >= 2) {
-          scrubVid.currentTime = p * scrubVid.duration;
+          if (isMobile) {
+            // Mobile: atualiza apenas se mudança > 1% para reduzir seeks
+            const targetTime = p * scrubVid.duration;
+            if (Math.abs(scrubVid.currentTime - targetTime) > scrubVid.duration * 0.01) {
+              scrubVid.currentTime = targetTime;
+            }
+          } else {
+            // Desktop: atualização direta (mais fluido)
+            scrubVid.currentTime = p * scrubVid.duration;
+          }
         }
  
         // Parallax sutil na imagem de fallback
