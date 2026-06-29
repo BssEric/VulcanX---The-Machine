@@ -872,7 +872,7 @@ const MobileModule = (() => {
     btn.addEventListener('click', () => isOpen ? close() : open());
  
     // Close drawer after navigation link is clicked
-   drawer.querySelectorAll('a').forEach(a => {
+    drawer.querySelectorAll('a').forEach(a => {
       a.addEventListener('click', (e) => {
         e.preventDefault();
 
@@ -884,10 +884,10 @@ const MobileModule = (() => {
           if (target && lenis) {
             lenis.scrollTo(target, {
               duration: 1.4,
-          easing: t => Math.pow(t, 4)
-        });
-      }
-      }, 100);
+              easing: t => Math.pow(t, 4)
+            });
+          }
+        }, 100);
       });
     });
  
