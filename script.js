@@ -463,12 +463,21 @@ const VideoTravelModule = (() => {
      Bidirecional: onUpdate lida com ida e volta.
   ─────────────────────────────────────────────────────────── */
   function initScrub() {
+    // On small screens the bridge is short (35vh/220px). If we start detaching
+    // as soon as the bridge enters the viewport ('top bottom'), the trigger fires
+    // before the hero has visually left the screen, making the video appear to
+    // float outside the hero section immediately. We delay the detach until the
+    // bridge's *top* reaches the bottom of the viewport (i.e. the bridge is just
+    // about to become visible), which maps to a much safer moment.
     const isMobile = window.innerWidth <= 768;
+    // Minimum progress before we allow detach — prevents false-fires on small bridges
+    const DETACH_THRESHOLD = isMobile ? 0.08 : 0.01;
+
     ScrollTrigger.create({
       trigger: bridge,
-      start: isMobile ? 'top 75%' : 'top bottom',  // Mobile: inicia mais tarde; Desktop: entrada normal
+      start: 'top bottom',  // bridge começa a entrar na viewport
       end:   'bottom 15%',  // Finaliza o percurso um pouco antes do fim da ponte
-      scrub: isMobile ? 0.3 : true,  // Mobile: scrub mais responsivo; Desktop: scrub suave
+      scrub: true,
  
       /* ── FRAME A FRAME (ida e volta) ── */
       onUpdate(self) {
@@ -476,13 +485,18 @@ const VideoTravelModule = (() => {
         const p = self.progress;
 
         // Detecta início do movimento (Ida)
-        if (p > 0 && p < 0.99 && phase === 'hero') {
+        // Guard: only detach once we have meaningful scroll progress to avoid
+        // premature flying when the bridge is short (especially on mobile).
+        if (p > DETACH_THRESHOLD && p < 0.99 && phase === 'hero') {
           phase = 'flying';
           detachToFixed();
         }
 
         if (phase !== 'flying') return;
-        applyFlyPosition(p);
+        // Remap p so that applyFlyPosition always receives 0→1 cleanly,
+        // excluding the dead-zone we added before detach.
+        const pMapped = Math.min(1, Math.max(0, (p - DETACH_THRESHOLD) / (1 - DETACH_THRESHOLD)));
+        applyFlyPosition(pMapped);
  
         // Limite de pouso (ida)
         if (p >= 0.99 && self.direction === 1) {
@@ -558,12 +572,11 @@ const ScrubModule = (() => {
     }
 
     // ScrollTrigger que controla o progresso
-    const isMobile = window.innerWidth <= 768;
     ScrollTrigger.create({
       trigger: '#s02',
       start: 'top top',
       end: 'bottom bottom',
-      scrub: isMobile ? 0.2 : 0.5, // Mobile: scrub mínimo; Desktop: scrub moderado
+      scrub: 1, // Adiciona suavização de 1s para evitar travamentos no seek do vídeo
       onUpdate: (self) => {
         const p = self.progress;
  
@@ -572,18 +585,8 @@ const ScrubModule = (() => {
         pctEl.textContent   = Math.round(p * 100) + '%';
  
         // Controla video.currentTime se vídeo disponível
-        // Throttling no mobile para evitar travamentos no seek
         if (scrubVid.duration && scrubVid.readyState >= 2) {
-          if (isMobile) {
-            // Mobile: atualiza apenas se mudança > 1% para reduzir seeks
-            const targetTime = p * scrubVid.duration;
-            if (Math.abs(scrubVid.currentTime - targetTime) > scrubVid.duration * 0.01) {
-              scrubVid.currentTime = targetTime;
-            }
-          } else {
-            // Desktop: atualização direta (mais fluido)
-            scrubVid.currentTime = p * scrubVid.duration;
-          }
+          scrubVid.currentTime = p * scrubVid.duration;
         }
  
         // Parallax sutil na imagem de fallback
@@ -872,7 +875,7 @@ const MobileModule = (() => {
     btn.addEventListener('click', () => isOpen ? close() : open());
  
     // Close drawer after navigation link is clicked
-    drawer.querySelectorAll('a').forEach(a => {
+   drawer.querySelectorAll('a').forEach(a => {
       a.addEventListener('click', (e) => {
         e.preventDefault();
 
@@ -884,10 +887,10 @@ const MobileModule = (() => {
           if (target && lenis) {
             lenis.scrollTo(target, {
               duration: 1.4,
-              easing: t => Math.pow(t, 4)
-            });
-          }
-        }, 100);
+          easing: t => Math.pow(t, 4)
+        });
+      }
+      }, 100);
       });
     });
  
