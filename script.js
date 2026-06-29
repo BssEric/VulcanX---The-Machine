@@ -596,7 +596,7 @@ const ScrubModule = (() => {
       end: 'bottom bottom',
       // No mobile, um scrub levemente menor evita que a animação "escorregue" demais 
       // enquanto o hardware tenta alcançar o frame correto.
-      scrub: isMobile ? 0.5 : 1, 
+      scrub: isMobile ? 1.5 : 1, 
       onUpdate: (self) => {
         const p = self.progress;
  
@@ -985,13 +985,13 @@ const MobileModule = (() => {
   /* ── 6. Reduce S02 scrub height on mobile ─────────────────── */
   function patchScrub() {
     if (!IS_MOBILE()) return;
-    // Ajustado de 250vh para 400vh para manter o scrub suave também no mobile
+    
     const s02 = document.getElementById('s02');
-    if (s02) s02.style.height = '400vh';
-    // Show simplified spec pills
+    // INCREASE THIS VALUE: 600vh or 800vh makes the scrub last much longer
+    if (s02) s02.style.height = '600vh'; 
+    
     const pills = document.getElementById('s02-mobile-specs');
     if (pills) pills.style.display = 'flex';
-    // Invalidate the ScrollTrigger so it recalculates
     ScrollTrigger.refresh();
   }
  
