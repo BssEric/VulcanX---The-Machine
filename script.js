@@ -368,6 +368,19 @@ const VideoTravelModule = (() => {
     gsap.set(overlayEl, {
       opacity: Math.max(0, 1 - p / 0.36),
     });
+
+    gsap.set(vidCont, { top: T, left: L, width: W, height: H,
+      borderRadius: br + 'px', boxShadow: sh, opacity });
+
+      gsap.killTweensOf([contentEl, '#hud-tl', '#hud-tr', overlayEl]);
+
+      gsap.set([contentEl, '#hud-tl', '#hud-tr'], {
+      opacity: Math.max(0, 1 - p / 0.22),
+    });
+    
+    gsap.set(overlayEl, {
+      opacity: Math.max(0, 1 - p / 0.36),
+    });
   }
  
   /* ── landOnAnchor ───────────────────────────────────────────
@@ -453,9 +466,18 @@ const VideoTravelModule = (() => {
   ─────────────────────────────────────────────────────────── */
   function restoreHeroContent() {
     gsap.to([contentEl, '#hud-tl', '#hud-tr'], {
-      opacity: 1, duration: 0.7, ease: 'power2.out',
+      opacity: 1, 
+      duration: 0.7, 
+      ease: 'power2.out',
+      overwrite: true // FORCE OVERWRITE: Clears any stuck '0' states
     });
-    gsap.to(overlayEl, { opacity: 1, duration: 0.6, ease: 'power2.out' });
+    
+    gsap.to(overlayEl, { 
+      opacity: 1, 
+      duration: 0.6, 
+      ease: 'power2.out', 
+      overwrite: true // FORCE OVERWRITE
+    });
   }
  
   /* ── initScrub ──────────────────────────────────────────────
