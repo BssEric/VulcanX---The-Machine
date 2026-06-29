@@ -546,47 +546,72 @@ const ScrubModule = (() => {
   const fillEl   = document.getElementById('scrub-fill');
   const pctEl    = document.getElementById('scrub-pct');
  
+  let reqId = null;
+  let targetTime = 0;
+  let isUpdating = false;
+
+  // Função de atualização isolada do ScrollTrigger
+  function updateVideo() {
+    if (!scrubVid || scrubVid.readyState < 2 || !scrubVid.duration) {
+      isUpdating = false;
+      return;
+    }
+    
+    // Threshold: Só atualiza o tempo se a diferença for maior que 0.05s.
+    // Isso poupa a CPU de tentar buscar micro-frames no mobile.
+    if (Math.abs(scrubVid.currentTime - targetTime) > 0.05) {
+      scrubVid.currentTime = targetTime;
+    }
+    
+    isUpdating = false;
+  }
+
   function init() {
-    // Detecta mobile e troca a fonte do vídeo de scrub se houver data-mob-src
     const isMobile = window.innerWidth <= 768;
+    
     if (isMobile && scrubVid && scrubVid.dataset.mobSrc) {
       scrubVid.src = scrubVid.dataset.mobSrc;
       if (scrubVid.dataset.mobPoster) scrubVid.poster = scrubVid.dataset.mobPoster;
-      scrubVid.load(); // Recarrega o vídeo com a nova fonte mobile
+      scrubVid.load(); 
     }
-
-    // Quando o vídeo de scrub estiver pronto, pega duração
-    // Se não há vídeo, usamos apenas a animação de parallax da imagem
  
-    // Fade in suave e fluido sincronizado com o scroll (scrub)
     if (scrubVid) {
+      // Força a pausa inicial para garantir que o navegador não tente tocar o vídeo
+      scrubVid.pause();
+      
       gsap.to(scrubVid, {
         opacity: 1,
         scrollTrigger: {
           trigger: '#s02',
-          start: 'top bottom', // Inicia o fade assim que a seção entra na viewport
-          end: 'top center',   // Finaliza o fade antes do vídeo centralizar
+          start: 'top bottom',
+          end: 'top center',
           scrub: true,
         }
       });
     }
 
-    // ScrollTrigger que controla o progresso
     ScrollTrigger.create({
       trigger: '#s02',
       start: 'top top',
       end: 'bottom bottom',
-      scrub: 1, // Adiciona suavização de 1s para evitar travamentos no seek do vídeo
+      // No mobile, um scrub levemente menor evita que a animação "escorregue" demais 
+      // enquanto o hardware tenta alcançar o frame correto.
+      scrub: isMobile ? 0.5 : 1, 
       onUpdate: (self) => {
         const p = self.progress;
  
-        // Atualiza UI de progresso
-        fillEl.style.height = (p * 100) + '%';
-        pctEl.textContent   = Math.round(p * 100) + '%';
+        // Atualizações de UI leves continuam no fluxo normal
+        if (fillEl) fillEl.style.height = (p * 100) + '%';
+        if (pctEl) pctEl.textContent = Math.round(p * 100) + '%';
  
-        // Controla video.currentTime se vídeo disponível
-        if (scrubVid.duration && scrubVid.readyState >= 2) {
-          scrubVid.currentTime = p * scrubVid.duration;
+        // Atualização pesada (Vídeo) vai para o rAF
+        if (scrubVid && scrubVid.duration) {
+          targetTime = p * scrubVid.duration;
+          
+          if (!isUpdating) {
+            isUpdating = true;
+            reqId = requestAnimationFrame(updateVideo);
+          }
         }
  
         // Parallax sutil na imagem de fallback
