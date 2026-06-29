@@ -596,7 +596,7 @@ const ScrubModule = (() => {
       end: 'bottom bottom',
       // No mobile, um scrub levemente menor evita que a animação "escorregue" demais 
       // enquanto o hardware tenta alcançar o frame correto.
-      scrub: isMobile ? 1.5 : 1, 
+      scrub: isMobile ? 1.2 : 1, 
       onUpdate: (self) => {
         const p = self.progress;
  
