@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="VULCAN X — Engenharia de ponta. Alumínio CNC monobloco. Poder que você sente antes de ligar. Máquina premium 2025."/>
+<meta name="theme-color" content="#000000"/>
+<meta name="color-scheme" content="dark"/>
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"/>
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="VULCAN X — The Machine | Premium Series 2025"/>
+<meta property="og:description" content="Engenharia de ponta. Alumínio CNC monobloco. Poder que você sente antes de ligar."/>
+<meta property="og:image" content="assets/img-hero.png"/>
+<meta property="og:url" content="https://vulcanx.com"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="VULCAN X — The Machine"/>
+<meta name="twitter:description" content="Engenharia de ponta. Alumínio CNC monobloco."/>
+<meta name="twitter:image" content="assets/img-hero.png"/>
+<title>VULCAN — The Machine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link rel="icon" id="favicon" href="assets/fav1.png" type="image/png" sizes="32x32"/>
+<link rel="icon" href="assets/fav1.png" type="image/png" sizes="192x192"/> <!-- Para Android/Chrome -->
+<link rel="apple-touch-icon" href="assets/fav1.png"/> <!-- Para iOS Home Screen -->
+<link rel="stylesheet" href="style.css"/>
+<!-- ── Schema.org Markup ─────────────────────────────────────── -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "VULCAN X",
+  "brand": "VULCAN",
+  "description": "Máquina premium series 2025. Engenharia de ponta com alumínio CNC monobloco.",
+  "image": "assets/img-hero.png",
+  "category": "Industrial Equipment",
+  "url": "https://vulcanx.com",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "bestRating": "5",
+    "worstRating": "1",
+    "ratingCount": "0"
+  }
+}
+</script>
+</head>
+<body>
+<!-- ── SKIP LINK ────────────────────────────────────────────────── -->
+<a href="#s01" class="skip-link">Pular para conteúdo principal</a>
+
+<!-- ── CURSOR ─────────────────────────────────────────────────── -->
+<div id="cur-dot" aria-hidden="true"></div>
+<div id="cur-ring" aria-hidden="true"></div>
+ 
+<!-- ── PRELOADER ─────────────────────────────────────────────── -->
+<div id="preloader" role="status" aria-live="polite" aria-label="Carregando">
+  <div class="pre-wordmark"><span>VULCAN</span></div>
+  <div class="pre-line"></div>
+  <div class="pre-pct" id="pre-pct">0%</div>
+</div>
+ 
+<!-- ── NAVBAR ─────────────────────────────────────────────────── -->
+<nav id="nav">
+  <div class="nav-logo">VLX</div>
+  <ul class="nav-links">
+    <li><a href="#s01">MÁQUINA</a></li>
+    <li><a href="#s02">ANATOMIA</a></li>
+    <li><a href="#s03">UNBOXING</a></li>
+    <li><a href="#s04">ADQUIRIR</a></li>
+  </ul>
+  <a href="#s04" class="nav-cta">CONFIGURAR</a>
+  <button id="nav-hamburger" aria-label="Abrir menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+ 
+<!-- ── MOBILE DRAWER ─────────────────────────────────────────── -->
+<div id="mobile-drawer" role="dialog" aria-label="Menu de navegação" aria-hidden="true">
+  <ul class="mob-nav-links">
+    <li><a href="#s01" class="mob-link">Máquina</a></li>
+    <li><a href="#s02" class="mob-link">Anatomia</a></li>
+    <li><a href="#s03" class="mob-link">Unboxing</a></li>
+    <li><a href="#s04" class="mob-link">Configurar</a></li>
+  </ul>
+  <a href="#s04" class="mob-drawer-cta mob-link">CONFIGURAR AGORA →</a>
+  <div class="mob-drawer-footer">VULCAN X — PREMIUM SERIES 2025</div>
+</div>
+ 
+<!-- ════════════════════════════════════════════════════════════
+     HERO — Vídeo fullscreen background
+     O #vid-container viaja daqui para a Seção 01
+     ════════════════════════════════════════════════════════════ -->
+<section id="hero">
+  <!-- O elemento que vai "viajar" via GSAP Flip -->
+  <div id="vid-container">
+    <video id="hero-video" autoplay muted playsinline preload="auto" poster="assets/img-hero.png">
+      <source src="assets/hero-video.mp4" type="video/mp4">
+      Seu navegador não suporta a tag de vídeo.
+    </video>
+  </div>
+ 
+  <div id="hero-overlay"></div>
+ 
+  <div id="hero-content">
+    <h1 class="hero-title">
+      <div class="line"><span id="t1">THE</span></div>
+      <div class="line"><span id="t2" class="accent-word">VULCAN</span></div>
+      <div class="line"><span id="t3">X</span></div>
+    </h1>
+    <div class="hero-bottom">
+      <p class="hero-sub"><span id="hero-sub-txt">Engenharia de ponta. Alumínio CNC monobloco. Poder que você sente antes de ligar.</span></p>
+      <div class="hero-scroll-ind" id="scroll-ind">
+        <div class="scroll-track"></div>
+        <span>SCROLL</span>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- ════════════════════════════════════════════════════════════
+     PONTE DE SCROLL — espaço para a transição do vídeo
+     ════════════════════════════════════════════════════════════ -->
+<div id="bridge">
+  <div id="bridge-bg-text">VULCAN</div>
+</div>
+ 
+<!-- ════════════════════════════════════════════════════════════
+     SEÇÃO 01 — A MÁQUINA
+     O vídeo pousa em #vid-anchor
+     ════════════════════════════════════════════════════════════ -->
+<section id="s01">
+  <div class="s01-layout">
+    <!-- Coluna esquerda: onde o vídeo pousa + galeria -->
+    <div class="s01-left">
+      <div class="s01-number" aria-hidden="true">01</div>
+      <div id="vid-anchor">
+        <!-- O vídeo é movido para cá pelo GSAP Flip -->
+        <img
+          id="anchor-img"
+          
+          style="width:100%;display:block;"
+        />
+      </div>
+      <!-- Duas fotos extras abaixo do anchor -->
+      <div class="s01-gallery">
+        <div class="s01-gallery-item" data-index="0">
+          <img
+            src="assets/teclado.png"
+            alt="VULCAN X — teclado mecânico"
+            loading="lazy"
+          />
+          <div class="s01-gallery-label">
+            <span class="gal-tag">DETALHE 01</span>
+            <span class="gal-name">Teclado Mecânico</span>
+          </div>
+        </div>
+        <div class="s01-gallery-item" data-index="1">
+          <img
+            src="assets/lateral-direito.png"
+            alt="VULCAN X — conectividade"
+            loading="lazy"
+          />
+          <div class="s01-gallery-label">
+            <span class="gal-tag">DETALHE 02</span>
+            <span class="gal-name">Conectividade Total</span>
+          </div>
+        </div>
+      </div>
+    </div>
+ 
+    <!-- Coluna direita: heading + specs + floating tags -->
+    <div class="s01-right">
+      <h2 class="s01-heading">
+        <div class="reveal-line"><span>A MELHOR</span></div>
+        <div class="reveal-line"><span>MÁQUINA</span></div>
+        <div class="reveal-line"><span>DO MUNDO.</span></div>
+      </h2>
+ 
+      <div class="specs-grid" id="specs-grid">
+        <div class="spec-card">
+          <div class="spec-tag">PROCESSADOR</div>
+          <div class="spec-name">Intel Core<br>i9-15980HX</div>
+          <div class="spec-detail">24 núcleos · 5.6GHz · 36MB L3</div>
+          <div class="spec-bar"><div class="spec-bar-fill" style="--w:98%"></div></div>
+        </div>
+        <div class="spec-card">
+          <div class="spec-tag">PLACA DE VÍDEO</div>
+          <div class="spec-name">NVIDIA<br>RTX 5090 Ti</div>
+          <div class="spec-detail">24GB GDDR7 · DLSS 4 · 220W TGP</div>
+          <div class="spec-bar"><div class="spec-bar-fill" style="--w:100%"></div></div>
+        </div>
+        <div class="spec-card">
+          <div class="spec-tag">DISPLAY</div>
+          <div class="spec-name">18" OLED<br>240Hz QHD+</div>
+          <div class="spec-detail">1ms GTG · 100% DCI-P3 · HDR1000</div>
+          <div class="spec-bar"><div class="spec-bar-fill" style="--w:99%"></div></div>
+        </div>
+        <div class="spec-card">
+          <div class="spec-tag">RESFRIAMENTO</div>
+          <div class="spec-name">ArcticFlow™<br>Vapor Chamber</div>
+          <div class="spec-detail">7 heatpipes · 5 axiais · 72°C max</div>
+          <div class="spec-bar"><div class="spec-bar-fill" style="--w:95%"></div></div>
+        </div>
+        <div class="spec-card wide">
+          <div class="spec-tag">CHASSI</div>
+          <div class="spec-name">Alumínio CNC Monobloco — Liga 6000 Aeroespacial</div>
+          <div class="spec-detail">Anodizado fosco · 2,1 kg · MIL-STD-810H · Proteção IP54</div>
+          <div class="spec-bar"><div class="spec-bar-fill" style="--w:92%"></div></div>
+        </div>
+      </div>
+ 
+      <div class="s01-floating-tags" id="float-tags">
+        <div class="float-tag">
+          <div>
+            <div class="float-num">240</div>
+            <div class="float-unit">Hz</div>
+          </div>
+          <div class="float-label">Taxa de<br>atualização</div>
+        </div>
+        <div class="float-tag">
+          <div>
+            <div class="float-num">14.5</div>
+            <div class="float-unit">GB/s</div>
+          </div>
+          <div class="float-label">Velocidade<br>NVMe</div>
+        </div>
+        <div class="float-tag">
+          <div>
+            <div class="float-num">28</div>
+            <div class="float-unit">min</div>
+          </div>
+          <div class="float-label">0→80%<br>GaN 240W</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- ════════════════════════════════════════════════════════════
+     SEÇÃO 02 — RAIO-X / VIDEO SCRUB
+     ════════════════════════════════════════════════════════════ -->
+<section id="s02">
+  <div id="s02-sticky">
+    <!-- Vídeo de scrub — controlado pelo currentTime via scroll -->
+    <video id="scrub-video" 
+      src="assets/explodevideo.mp4" 
+      data-mob-src="assets/explodevideo-mobile.mp4"
+      poster="assets/img-lateralsemiaberto.png"
+      data-mob-poster="assets/img-lateralsemiaberto-mobile.png"
+      muted playsinline preload="metadata" 
+      webkit-playsinline x5-video-player-type="h5">
+      Seu navegador não suporta a tag de vídeo.
+    </video>
+ 
+    <div id="s02-overlay"></div>
+ 
+    <!-- Progresso lateral -->
+    <div id="scrub-progress">
+      <div class="scrub-track"><div class="scrub-fill" id="scrub-fill"></div></div>
+      <div class="scrub-pct" id="scrub-pct">0%</div>
+    </div>
+  </div>
+</section>
+ 
+<!-- ════════════════════════════════════════════════════════════
+     SEÇÃO 03 — UNBOXING
+     ════════════════════════════════════════════════════════════ -->
+<section id="s03">
+  <div id="s03-sticky">
+    <!-- Metade esquerda da caixa -->
+    <div class="unbox-half unbox-left" id="unbox-l">
+      <img
+        class="unbox-img"
+        src="assets/ladoesquerdo.png"
+        alt="Caixa VULCAN esquerda"
+        loading="lazy"
+      />
+      <div class="unbox-shade"></div>
+    </div>
+    <!-- Metade direita da caixa -->
+    <div class="unbox-half unbox-right" id="unbox-r">
+      <img
+        class="unbox-img"
+        src="assets/ladodireito.png"
+        alt="Caixa VULCAN direita"
+        loading="lazy"
+      />
+      <div class="unbox-shade"></div>
+    </div>
+ 
+    <!-- Revelação após abertura -->
+    <div id="unbox-reveal">
+      <img
+        src="assets/vision-unboxing.png"
+        alt="VULCAN X — Unboxing"
+        id="unbox-product-img"
+        loading="lazy"
+      />
+      <div class="unbox-reveal-text">
+        <span class="unbox-eyebrow">PRIMEIRO CONTATO</span>
+        <h2 class="unbox-title">UMA OBRA<br>DE ARTE.</h2>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- ════════════════════════════════════════════════════════════
+     SEÇÃO 04 — CONFIGURADOR / E-COMMERCE
+     ════════════════════════════════════════════════════════════ -->
+<section id="s04">
+  <div class="s04-layout">
+ 
+    <!-- Visual sticky -->
+    <div class="s04-visual" id="s04-visual">
+      <img
+        class="s04-product-img"
+        src="assets/visionfull.png"
+        alt="VULCAN X — Configure"
+        id="s04-main-img"
+        loading="lazy"
+      />
+      <div class="s04-badge">
+        <div class="badge-dot-g"></div>
+        <span>PREMIUM SERIES 2025</span>
+      </div>
+      <!-- Duas fotos extras de contexto -->
+      <div class="s04-gallery">
+        <div class="s04-gallery-item">
+          <img
+            src="assets/display.png"
+            alt="VULCAN X — lateral"
+            loading="lazy"
+          />
+          <div class="s04-gal-label">
+            <span>Display OLED 240Hz</span>
+            <span class="s04-gal-sub">18" QHD+ · HDR1000</span>
+          </div>
+        </div>
+        <div class="s04-gallery-item">
+          <img
+            src="assets/chassi.png"
+            alt="VULCAN X — ângulo"
+            loading="lazy"
+          />
+          <div class="s04-gal-label">
+            <span>Chassi CNC</span>
+            <span class="s04-gal-sub">Alumínio aeroespacial · 2,1 kg</span>
+          </div>
+        </div>
+      </div>
+    </div>
+ 
+    <!-- Configurador -->
+    <div class="s04-config" id="s04-config">
+      <h2 class="s04-heading">
+        SEU<br><em>SETUP.</em><br>SUA REGRA.
+      </h2>
+ 
+      <!-- RAM -->
+      <div class="cfg-group">
+        <div class="cfg-label">MEMÓRIA RAM</div>
+        <div class="cfg-options" data-group="ram">
+          <button class="cfg-btn active" data-price="0" data-val="16GB DDR5"><span>16 GB</span></button>
+          <button class="cfg-btn" data-price="600" data-val="32GB DDR5"><span>32 GB</span></button>
+          <button class="cfg-btn" data-price="1500" data-val="64GB DDR5"><span>64 GB</span></button>
+        </div>
+      </div>
+ 
+      <!-- Storage -->
+      <div class="cfg-group">
+        <div class="cfg-label">ARMAZENAMENTO</div>
+        <div class="cfg-options" data-group="storage">
+          <button class="cfg-btn active" data-price="0" data-val="1TB NVMe"><span>1 TB</span></button>
+          <button class="cfg-btn" data-price="400" data-val="2TB NVMe"><span>2 TB</span></button>
+          <button class="cfg-btn" data-price="700" data-val="4TB NVMe"><span>4 TB</span></button>
+        </div>
+      </div>
+ 
+      <!-- GPU -->
+      <div class="cfg-group">
+        <div class="cfg-label">PLACA DE VÍDEO</div>
+        <div class="cfg-options" data-group="gpu">
+          <button class="cfg-btn active" data-price="0" data-val="RTX 5080"><span>RTX 5080</span></button>
+          <button class="cfg-btn" data-price="2000" data-val="RTX 5090 Ti"><span>RTX 5090 Ti</span></button>
+        </div>
+      </div>
+ 
+      <!-- Preço -->
+      <div class="price-block">
+        <span class="price-label">TOTAL CONFIGURADO</span>
+        <div class="price-row">
+          <span class="price-curr">R$</span>
+          <span class="price-val" id="price-val">24.999</span>
+        </div>
+        <div class="price-inst">ou <span id="inst-val">12x R$ 2.083</span> sem juros no cartão</div>
+      </div>
+ 
+      <!-- Resumo -->
+      <div class="cfg-summary">
+        <div class="cfg-sum-item"><span class="cfg-sum-k">RAM</span><span class="cfg-sum-v" id="sum-ram">16GB DDR5</span></div>
+        <div class="cfg-sum-item"><span class="cfg-sum-k">SSD</span><span class="cfg-sum-v" id="sum-ssd">1TB NVMe</span></div>
+        <div class="cfg-sum-item"><span class="cfg-sum-k">GPU</span><span class="cfg-sum-v" id="sum-gpu">RTX 5080</span></div>
+      </div>
+ 
+      <!-- CTAs -->
+      <button class="btn-cta" id="btn-cart"><span>ADICIONAR AO CARRINHO</span></button>
+      <button class="btn-secondary">COMPRAR AGORA</button>
+ 
+      <div class="trust-row">
+        <div class="trust-item"><div class="t-dot"></div>2 anos de garantia</div>
+        <div class="trust-item"><div class="t-dot"></div>Frete grátis</div>
+        <div class="trust-item"><div class="t-dot"></div>30 dias para devolver</div>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- ── FOOTER ──────────────────────────────────────────────────── -->
+<footer id="footer">
+  <div class="footer-top">
+    <div>
+      <div class="footer-wordmark">VULCAN<br>X</div>
+      <p class="footer-tagline">Engenharia para quem não aceita menos que o máximo absoluto.</p>
+    </div>
+    <div class="footer-links-grid">
+      <div class="footer-col"><h5>PRODUTO</h5><ul><li><a href="#">Especificações</a></li><li><a href="#">Configurar</a></li><li><a href="#">Comparar</a></li><li><a href="#">Acessórios</a></li></ul></div>
+      <div class="footer-col"><h5>SUPORTE</h5><ul><li><a href="#">Central de ajuda</a></li><li><a href="#">Garantia</a></li><li><a href="#">Downloads</a></li><li><a href="#">Assistência</a></li></ul></div>
+      <div class="footer-col"><h5>EMPRESA</h5><ul><li><a href="#">Sobre nós</a></li><li><a href="#">Imprensa</a></li><li><a href="#">Carreiras</a></li><li><a href="#">Contato</a></li></ul></div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 VULCAN X TECHNOLOGIES</span>
+    <span class="footer-powered">Powered by <a href="https://github.com/BssEric" target="_blank" rel="noopener noreferrer">BssEric</a></span>
+    <div class="footer-legal"><a href="#">Privacidade</a><a href="#">Termos</a><a href="#">Cookies</a></div>
+  </div>
+</footer>
+ 
+<button id="btn-top" aria-label="Voltar ao topo">↑</button>
+ 
+<!-- ── MOBILE STICKY CTA ──────────────────────────────────────── -->
+<div id="mobile-sticky-cta" role="complementary" aria-label="Comprar">
+  <div class="mob-cta-price">
+    <span class="mob-cta-from">A PARTIR DE</span>
+    <span class="mob-cta-amount">R$ <span id="mob-price">24.999</span></span>
+  </div>
+  <button class="mob-cta-btn" id="mob-cta-btn">COMPRAR</button>
+</div>
+<div id="toast">✓ &nbsp;Adicionado ao carrinho</div>
+ 
+<!-- ════════════════════════════════════════════════════════════
+     SCRIPTS — GSAP + Lenis
+     ════════════════════════════════════════════════════════════ -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Flip.min.js"></script>
+<!-- Lenis smooth scroll CDN -->
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
